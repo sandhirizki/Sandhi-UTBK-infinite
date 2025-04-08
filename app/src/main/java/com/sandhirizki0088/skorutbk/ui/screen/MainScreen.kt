@@ -1,7 +1,6 @@
 package com.sandhirizki0088.skorutbk.ui.screen
 
 import android.content.res.Configuration
-import android.widget.Button
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -56,10 +55,12 @@ fun MainScreen() {
 
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier) {
-    var tpa_1 by remember { mutableStateOf("") }
-    var tpa_2 by remember { mutableStateOf("") }
-    var tpa_3 by remember { mutableStateOf("") }
-    var tpa_4 by remember { mutableStateOf("") }
+    var tpa1 by remember { mutableStateOf("") }
+    var tpa2 by remember { mutableStateOf("") }
+    var tpa3 by remember { mutableStateOf("") }
+    var tpa4 by remember { mutableStateOf("") }
+    var rataRata by remember { mutableStateOf<String?>(null) }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -75,9 +76,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
         )
         OutlinedTextField(
-            value = tpa_1,
-            onValueChange = { tpa_1 = it },
-            label = { Text(text = stringResource(R.string.tpa_1)) },
+            value = tpa1,
+            onValueChange = { tpa1 = it },
+            label = { Text(text = stringResource(R.string.tpa1)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -87,9 +88,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
         )
         OutlinedTextField(
-            value = tpa_2,
-            onValueChange = { tpa_2 = it },
-            label = { Text(text = stringResource(R.string.tpa_2)) },
+            value = tpa2,
+            onValueChange = { tpa2 = it },
+            label = { Text(text = stringResource(R.string.tpa2)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -99,9 +100,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
         )
         OutlinedTextField(
-            value = tpa_3,
-            onValueChange = { tpa_3 = it },
-            label = { Text(text = stringResource(R.string.tpa_3)) },
+            value = tpa3,
+            onValueChange = { tpa3 = it },
+            label = { Text(text = stringResource(R.string.tpa3)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -111,9 +112,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
         )
         OutlinedTextField(
-            value = tpa_4,
-            onValueChange = { tpa_4 = it },
-            label = { Text(text = stringResource(R.string.tpa_4)) },
+            value = tpa4,
+            onValueChange = { tpa4 = it },
+            label = { Text(text = stringResource(R.string.tpa4)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -123,12 +124,29 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
         )
         Button(
-            onClick = {},
+            onClick = {
+                val nilaiList = listOf(tpa1, tpa2, tpa3, tpa4).map { it.toFloatOrNull() }
+                if (nilaiList.all { it != null }) {
+                    val rata = nilaiList.filterNotNull().average()
+                    rataRata = "Rata-rata: %.2f".format(rata)
+                } else {
+                    rataRata = "Masukkan semua nilai dengan benar!"
+                }
+            },
             modifier = Modifier.padding(top = 8.dp),
             contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(R.string.hitung))
         }
+        rataRata?.let {
+            Text(
+                text = it,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+        }
+
+
 
     }
 

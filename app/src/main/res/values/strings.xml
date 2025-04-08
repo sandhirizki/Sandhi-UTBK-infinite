@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">skorutbk</string>
-    <string name="utbk_intro" translatable="false">Semoga Hasilnya memuaskan ya dek</string>
-    <string name="tpa_1" translatable="false">Kemampuan Penalaran Umum</string>
-    <string name="tpa_2" translatable="false">Pengetahuan dan Pemahaman Umum</string>
-    <string name="tpa_3" translatable="false">Kemampuan Memamhami Bacaan</string>
-    <string name="tpa_4" translatable="false">Pengetahuan Kuantitatif</string>
+    <string name="utbk_intro" translatable="false">Semoga Hasilnya memuaskan yaa hehehe\n\nIsi dengan nilai kalian agar bisa tahu rata rata nilai TPS kalian</string>
+    <string name="tpa1" translatable="false">Kemampuan Penalaran Umum</string>
+    <string name="tpa2" translatable="false">Pengetahuan dan Pemahaman Umum</string>
+    <string name="tpa3" translatable="false">Kemampuan Memamhami Bacaan</string>
+    <string name="tpa4" translatable="false">Pengetahuan Kuantitatif</string>
     <string name="hitung" translatable="false">Hitung</string>
+    <string name="rataRata" translatable="false">Rata - rata</string>
+
 
 
 </resources>
