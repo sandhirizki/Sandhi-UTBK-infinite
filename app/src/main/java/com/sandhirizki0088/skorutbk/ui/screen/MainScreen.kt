@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -60,6 +62,8 @@ fun ScreenContent(modifier: Modifier = Modifier) {
     var tpa3 by remember { mutableStateOf("") }
     var tpa4 by remember { mutableStateOf("") }
     var rataRata by remember { mutableStateOf<String?>(null) }
+    var done by remember { mutableStateOf(false) }
+
 
     Column(
         modifier = modifier
@@ -123,28 +127,35 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxWidth()
 
         )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+        ) {
+            Checkbox(
+                checked = done,
+                onCheckedChange = { done = it }
+            )
+            Text(text = stringResource(R.string.done))
+        }
         Button(
             onClick = {
                 val nilaiList = listOf(tpa1, tpa2, tpa3, tpa4).map { it.toFloatOrNull() }
                 if (nilaiList.all { it != null }) {
                     val rata = nilaiList.filterNotNull().average()
-                    rataRata = "Rata-rata: %.2f".format(rata)
+                    rataRata = "Rata-rata = %.2f".format(rata)
                 } else {
                     rataRata = "Masukkan semua nilai dengan benar!"
                 }
             },
+            enabled = done,
             modifier = Modifier.padding(top = 8.dp),
             contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
         ) {
-            Text(text = stringResource(R.string.hitung))
+            Text(text = rataRata ?: stringResource(R.string.hitung))
         }
-        rataRata?.let {
-            Text(
-                text = it,
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(top = 16.dp)
-            )
-        }
+
 
 
 
