@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">skorutbk</string>
+    <string name="hitung">hitung</string>
+    <string name="rataRata">Rata - rata</string>
+    <string name="done">Saya sudah yakin</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="utbk_intro">Goodluck</string>
+    <string name="tpa3">KMB</string>
+    <string name="tpa4">Pengetahuan Kuantitatif</string>
+    <string name="tpa1">KPU</string>
+    <string name="tpa2">PPU</string>
+    <string name="copyright">a</string>
 </resources>
