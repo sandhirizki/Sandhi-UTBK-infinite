@@ -1,6 +1,7 @@
 package com.sandhirizki0088.skorutbk.ui.screen
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -31,6 +32,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -91,6 +94,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         Text(
             text = stringResource(id = R.string.utbk_intro),
             style = MaterialTheme.typography.bodyLarge,
@@ -173,6 +177,15 @@ fun ScreenContent(modifier: Modifier = Modifier) {
         ) {
             Text(text = rataRata ?: stringResource(R.string.hitung))
         }
+        Image(
+            painter = painterResource(id = R.drawable.logo_snpmb),
+            contentDescription = stringResource(R.string.logo),
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 32.dp)
+                .align(Alignment.CenterHorizontally)
+        )
 
 
     }
