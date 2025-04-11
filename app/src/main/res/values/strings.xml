@@ -9,11 +9,15 @@
     <string name="rataRata">Rata - rata</string>
     <string name="done">Saya sudah yakin</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
-    <string name="copyright">"UTBK infinite" adalah aplikasi kecil yang siap bantu kamu ngitung rata-rata nilai UTBK tanpa ribet. Gak perlu Excel, gak perlu kalkulator—cukup masukin nilai kamu, dan boom! Rata-rata langsung muncul.\n\n🛠Fitur Singkat:\n
+    <string name="copyright">UTBK infinite adalah aplikasi kecil yang siap bantu kamu ngitung rata-rata nilai UTBK tanpa ribet. Gak perlu Excel, gak perlu kalkulator—cukup masukin nilai kamu, dan boom! Rata-rata langsung muncul.\n\n🛠Fitur Singkat:\n
 • Hitung nilai rata-rata dengan mudah \n
 • Desain simpel, fokus ke fungsi \n
 • Cocok buat kamu yang lagi siapin SNBT \n\nDibuat oleh:\n
 Seorang mahasiswa RPLA Tel-U yang suka bikin hal kecil tapi berguna.</string>
+    <string name="back">kembali</string>
+    <string name="logo" translatable="false">Logo SNPMB</string>
+    <string name="bagikan">Bagikan</string>
+
 
 
 
