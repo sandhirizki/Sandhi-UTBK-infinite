@@ -25,7 +25,7 @@ fun AboutScreen(navController: NavHostController) {
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick ={navController.popBackStack()} ) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.back),
@@ -46,7 +46,9 @@ fun AboutScreen(navController: NavHostController) {
     ) { innerPadding ->
         Text(
             text = stringResource(R.string.copyright),
-            modifier = Modifier.padding(innerPadding).padding(16.dp)
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(16.dp)
         )
     }
 }
