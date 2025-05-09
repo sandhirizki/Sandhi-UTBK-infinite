@@ -63,7 +63,7 @@ import java.util.Date
 @Composable
 fun MainScreen(navController: NavHostController) {
     val viewModel: MainViewModel = viewModel()
-    val daftar = viewModel.catatanList
+    val daftar = viewModel.daftarCatatan
     Scaffold(
 
         topBar = {
@@ -93,10 +93,12 @@ fun MainScreen(navController: NavHostController) {
             FloatingActionButton(onClick = {
                 navController.navigate("form/-1")
             }) {
-                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.tambah))
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.tambah)
+                )
             }
         }
-
     ) { padding ->
         if (daftar.isEmpty()) {
             Box(
@@ -281,7 +283,7 @@ fun ListItem(catatan: Catatan, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable { /* Navigasi ke form ubah */ }
             .padding(16.dp)) {
         Text(catatan.judul, fontWeight = FontWeight.Bold)
         Text("Skor: ${catatan.skor}")
