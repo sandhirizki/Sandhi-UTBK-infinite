@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -65,6 +66,7 @@ fun MainScreen(navController: NavHostController) {
 
         topBar = {
             TopAppBar(
+
                 title = {
                     Text(text = stringResource(id = R.string.app_name))
                 },
@@ -86,11 +88,23 @@ fun MainScreen(navController: NavHostController) {
             )
         }
     ) { padding ->
-        LazyColumn(contentPadding = padding) {
-            items(daftar) { catatan ->
-                ListItem(catatan = catatan)
+        if (daftar.isEmpty()) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = stringResource(R.string.blank))
+            }
+        } else {
+            LazyColumn(contentPadding = padding) {
+                items(daftar) { catatan ->
+                    ListItem(catatan = catatan, onClick = {
+                        navController.navigate("form/${catatan.id}")
+                    })
+                }
             }
         }
+
     }
 }
 
@@ -112,6 +126,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
     var done by rememberSaveable { mutableStateOf(false) }
 
     val context = LocalContext.current
+    val viewModel: MainViewModel = viewModel()
+
+
 
 
     Column(
@@ -248,12 +265,14 @@ fun ScreenContent(modifier: Modifier = Modifier) {
     }
 
 }
+
 @Composable
-fun ListItem(catatan: Catatan) {
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .clickable { /* Navigasi ke form ubah */ }
-        .padding(16.dp)) {
+fun ListItem(catatan: Catatan, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { /* Navigasi ke form ubah */ }
+            .padding(16.dp)) {
         Text(catatan.judul, fontWeight = FontWeight.Bold)
         Text("Skor: ${catatan.skor}")
         Text("Tanggal: ${SimpleDateFormat("dd MMM yyyy").format(Date(catatan.tanggal))}")
