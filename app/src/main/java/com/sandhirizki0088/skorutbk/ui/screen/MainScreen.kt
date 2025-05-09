@@ -19,10 +19,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -86,7 +88,15 @@ fun MainScreen(navController: NavHostController) {
                     }
                 }
             )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+                navController.navigate("form/-1")
+            }) {
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.tambah))
+            }
         }
+
     ) { padding ->
         if (daftar.isEmpty()) {
             Box(
@@ -271,7 +281,7 @@ fun ListItem(catatan: Catatan, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { /* Navigasi ke form ubah */ }
+            .clickable { onClick() }
             .padding(16.dp)) {
         Text(catatan.judul, fontWeight = FontWeight.Bold)
         Text("Skor: ${catatan.skor}")
